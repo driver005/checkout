@@ -1,0 +1,15 @@
+export const panama = [
+    "Bocas del Toro",
+    "Chiriquí",
+    "Coclé",
+    "Colón",
+    "Darién",
+    "Herrera",
+    "Los Santos",
+    "Panamá",
+    "Veraguas",
+    "Panamá Oeste",
+    "Emberá",
+    "Guna Yala",
+    "Ngäbe-Buglé",
+]

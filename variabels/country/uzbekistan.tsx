@@ -1,0 +1,16 @@
+export const uzbekistan = [
+    "Tashkent",
+    "Andijan Region",
+    "Bukhara Region",
+    "Fergana Region",
+    "Jizzakh Region",
+    "Namangan Region",
+    "Navoiy Region",
+    "Qashqadaryo Region",
+    "Samarqand Region",
+    "Sirdaryo Region",
+    "Surxondaryo Region",
+    "Tashkent Region",
+    "Xorazm Region",
+    "Karakalpakstan",
+]

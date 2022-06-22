@@ -1,0 +1,16 @@
+export const nauru = [
+    "Aiwo District",
+    "Anabar District",
+    "Anetan District",
+    "Anibare District",
+    "Baiti District",
+    "Boe District",
+    "Buada District",
+    "Denigomodu District",
+    "Ewa District",
+    "Ijuw District",
+    "Meneng District",
+    "Nibok District",
+    "Uaboe District",
+    "Yaren District",
+]
