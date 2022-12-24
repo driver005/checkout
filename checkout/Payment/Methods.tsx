@@ -44,7 +44,7 @@ export const Methods: React.FC<MethodsProps> = ({ error, loaded = true }) => {
         >
             <Flex>
                 <Label label='Shipping method' error={error} />
-                <VStack borderRadius='md' mt='4px' boxShadow='lg' spacing='0' alignItems='start' {...group}>
+                <VStack borderRadius='md' mt='4px' spacing='0' alignItems='start' {...group}>
                     {shipping.map((value: any) => {
                         const radio = getRadioProps({ value: value.label || '' })
                         return (

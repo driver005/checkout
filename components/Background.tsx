@@ -3,6 +3,8 @@ import {
     Flex,
     useColorModeValue,
 } from '@chakra-ui/react';
+import { hexToHSLA, LightenDarkenColor } from 'utils';
+import { BackgroundColor } from 'config';
 
 interface BackgroundProps {
     children: React.ReactNode
@@ -13,7 +15,7 @@ export const Background: React.FC<BackgroundProps> = ({ children }) => {
         <Flex
             minH={'100vh'}
             justify={'center'}
-            bg={useColorModeValue('white', 'gray.800')}
+            bg={(BackgroundColor === "#ffffff" || BackgroundColor === "#000000") ? BackgroundColor : LightenDarkenColor(BackgroundColor, -100)}
             overflowX={'hidden'}
         >
             {children}

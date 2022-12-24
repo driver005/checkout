@@ -1,7 +1,9 @@
 import { FormControl, FormErrorMessage, FormHelperText, FormLabel, InputAddonProps, InputGroup, InputLeftAddon, InputRightElement, Input as InputComponent, InputLeftElement, Icon } from "@chakra-ui/react";
+import { BackgroundColor, Border, BorderColor, Shadow, TextColor } from "config";
 import React from "react";
 import { Control, Controller, FieldValues } from "react-hook-form";
 import { RiErrorWarningLine } from "react-icons/ri";
+import { LightenDarkenColor } from "utils";
 
 declare type Type = (props: any) => JSX.Element;
 
@@ -50,17 +52,22 @@ export const Input: React.FC<InputProps> = ({
                 isInvalid={error}
                 isDisabled={disabled}
                 bg='white'
-                borderBottomRadius={(position === "top" || position === "mid") ? "none" : "md"}
-                borderTopRadius={(position === "bottom" || position === "mid") ? "none" : "md"}
+                borderBottomRadius={(position === "top" || position === "mid") ? "none" : Border}
+                borderTopRadius={(position === "bottom" || position === "mid") ? "none" : Border}
             >
                 <InputGroup>
                     {addon && <InputLeftElement children={addon} />}
                     <InputComponent
                         type={type}
-                        _focus={{ boxShadow: 'outline', borderColor: 'gray.200', }}
-                        _placeholder={{ color: error ? 'red.500' : 'gray.400', opacity: 1 }}
-                        borderBottomRadius={(position === "top" || position === "mid") ? "none" : "md"}
-                        borderTopRadius={(position === "bottom" || position === "mid") ? "none" : "md"}
+                        _focus={{ boxShadow: Shadow, borderColor: BorderColor }}
+                        _hover={{}}
+                        _placeholder={{ color: error ? 'red.500' : TextColor, opacity: 0.5 }}
+                        borderBottomRadius={(position === "top" || position === "mid") ? "none" : Border}
+                        borderTopRadius={(position === "bottom" || position === "mid") ? "none" : Border}
+                        background={BackgroundColor}
+                        border='1px solid'
+                        borderColor={LightenDarkenColor(BackgroundColor, 50)}
+                        color={TextColor}
                         errorBorderColor='red.500'
                         zIndex={error ? 1 : 0}
                         paddingRight={text ? '14' : '10'}

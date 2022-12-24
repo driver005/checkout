@@ -14,6 +14,7 @@ import { Flex } from '../Common/index';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Wrapper } from './Wrapper';
 import { Control, FieldValues } from 'react-hook-form';
+import { TextColor } from 'config';
 
 interface SepaProps {
     control: Control<FieldValues>;
@@ -23,7 +24,7 @@ export const Sepa: React.FC<SepaProps> = ({ control }) => (
     <React.Fragment>
         <Heading
             as='span'
-            color='gray.500'
+            color={TextColor}
             fontWeight='500'
             size='xs'
         >
@@ -32,7 +33,6 @@ export const Sepa: React.FC<SepaProps> = ({ control }) => (
         <VStack spacing='16px'>
             <Flex>
                 <ChakraFlex
-                    boxShadow='lg'
                     borderRadius='md'
                     mt='4px'
                 >

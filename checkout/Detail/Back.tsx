@@ -3,6 +3,7 @@ import { BiArrowBack } from 'react-icons/bi'
 import { AiFillDollarCircle } from 'react-icons/ai'
 import { motion, Variants } from 'framer-motion';
 import { Box, BoxProps, Flex, FlexProps, Heading, HeadingProps, Icon, IconProps, Skeleton } from '@chakra-ui/react';
+import { TextColor } from 'config';
 
 const MotionBox = motion<Omit<BoxProps, "transition">>(Box);
 const MotionFlex = motion<FlexProps>(Flex);
@@ -105,6 +106,7 @@ export const Back: React.FC<BackProps> = ({ loaded = true }) => (
                 left='0'
                 fontWeight='500'
                 fontSize='14px'
+                color={TextColor}
                 variants={textMotion}
             >
                 Back
@@ -117,6 +119,7 @@ export const Back: React.FC<BackProps> = ({ loaded = true }) => (
                     as='h1'
                     fontWeight='500'
                     fontSize='14px'
+                    color={TextColor}
                     variants={movingTextMotion}
                 >
                     Checkout

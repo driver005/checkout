@@ -11,7 +11,9 @@ import {
     Flex,
     Icon
 } from '@chakra-ui/react';
+import { BackgroundColor, Border, PrimaryColor, TextColor } from 'config';
 import { BsCheckCircleFill } from 'react-icons/bs';
+import { LightenDarkenColor } from 'utils';
 
 
 export interface RadioProps {
@@ -39,15 +41,16 @@ export const Radio: React.FC<RadioProps> = ({
             as='label'
             w='full'
             borderRadius='md'
-            bg='white'
+            background={BackgroundColor}
         >
             <input {...input} />
             <Box
                 {...checkbox}
                 cursor='pointer'
-                borderWidth='1px'
-                borderBottomRadius={(position === "top" || position === "mid") ? "none" : "md"}
-                borderTopRadius={(position === "bottom" || position === "mid") ? "none" : "md"}
+                border='1px solid'
+                borderColor={LightenDarkenColor(BackgroundColor, 50)}
+                borderBottomRadius={(position === "top" || position === "mid") ? "none" : Border}
+                borderTopRadius={(position === "bottom" || position === "mid") ? "none" : Border}
                 px={5}
                 py={3}
             >
@@ -62,18 +65,19 @@ export const Radio: React.FC<RadioProps> = ({
                         justifyContent='center'
                         borderRadius='full'
                         borderWidth='2px'
+                        borderColor={LightenDarkenColor(BackgroundColor, -50)}
                         flexShrink='0'
                         flexGrow='0'
                         bg={state.isChecked ? 'white' : 'transparent'}
                     >
-                        {state.isChecked && <Icon color='blue.500' as={BsCheckCircleFill} />}
+                        {state.isChecked && <Icon color={PrimaryColor} as={BsCheckCircleFill} />}
                     </Flex>
                     <Flex w='full' flexDirection='row' justifyContent='space-between'>
                         <VStack alignItems='start' spacing='0'>
-                            <chakra.span color={state.isChecked ? 'currentcolor' : 'gray.500'} fontWeight='600' fontSize='13px'>{label}</chakra.span>
-                            <chakra.span color={state.isChecked ? 'gray.500' : 'gray.400'} fontSize='11px'>{labelInfo}</chakra.span>
+                            <chakra.span color={state.isChecked ? TextColor : LightenDarkenColor(TextColor, 100)} fontWeight='600' fontSize='13px'>{label}</chakra.span>
+                            <chakra.span color={state.isChecked ? TextColor : LightenDarkenColor(TextColor, 100)} fontSize='11px'>{labelInfo}</chakra.span>
                         </VStack>
-                        <chakra.span color={state.isChecked ? 'currentcolor' : 'gray.500'} fontWeight='600'>{price}</chakra.span>
+                        <chakra.span color={state.isChecked ? TextColor : LightenDarkenColor(TextColor, 100)} fontWeight='600'>{price}</chakra.span>
                     </Flex>
                 </HStack>
 

@@ -16,6 +16,8 @@ import {
 } from "@choc-ui/chakra-autocomplete";
 import { FiChevronRight, FiChevronDown } from "react-icons/fi";
 import { Control, Controller, FieldValues } from 'react-hook-form';
+import { BackgroundColor, Border, BorderColor, PrimaryColor, Shadow, TextColor } from 'config';
+import { LightenDarkenColor } from 'utils';
 
 interface SelectProps {
     name: string;
@@ -55,21 +57,24 @@ export const Select: React.FC<SelectProps> = ({
                 isInvalid={error}
                 isDisabled={disabled}
                 bg='white'
-                borderBottomRadius={(position === "top" || position === "mid") ? "none" : "md"}
-                borderTopRadius={(position === "bottom" || position === "mid") ? "none" : "md"}
+                borderBottomRadius={(position === "top" || position === "mid") ? "none" : Border}
+                borderTopRadius={(position === "bottom" || position === "mid") ? "none" : Border}
             >
                 <AutoComplete openOnFocus onChange={onChanges ? onChanges : onChange} onBlur={onBlur} value={value}>
-                    {({ isOpen }: any) => (
+                    {({ isOpen }: { isOpen: boolean }) => (
                         <React.Fragment>
                             <InputGroup>
                                 <AutoCompleteInput
-                                    border='1px'
-                                    borderBottomRadius={(position === "top" || position === "mid") ? "none" : "md"}
-                                    borderTopRadius={(position === "bottom" || position === "mid") ? "none" : "md"}
-                                    _focus={{ boxShadow: 'outline', borderColor: 'gray.200' }}
-                                    _placeholder={{ color: error ? 'red.500' : 'gray.400', opacity: 1 }}
+                                    borderBottomRadius={(position === "top" || position === "mid") ? "none" : Border}
+                                    borderTopRadius={(position === "bottom" || position === "mid") ? "none" : Border}
+                                    _focus={{ boxShadow: Shadow, borderColor: BorderColor }}
+                                    _hover={{}}
+                                    _placeholder={{ color: error ? 'red.500' : TextColor, opacity: 0.5 }}
+                                    background={BackgroundColor}
+                                    border='1px solid'
+                                    borderColor={LightenDarkenColor(BackgroundColor, 50)}
                                     defaultValue={defaultValue}
-                                    color={error ? 'red.500' : 'currentcolor'}
+                                    color={error ? 'red.500' : TextColor}
                                     placeholder={label}
                                     name={name}
                                     ref={ref}
@@ -78,7 +83,7 @@ export const Select: React.FC<SelectProps> = ({
                                     <Icon as={isOpen ? FiChevronRight : FiChevronDown} />
                                 </InputRightElement>
                             </InputGroup>
-                            <AutoCompleteList borderColor={error ? 'red.500' : 'purple.500'} border='2px'>
+                            <AutoCompleteList borderColor={error ? 'red.500' : PrimaryColor} background={`${BackgroundColor} !important`} border='2px'>
                                 {values?.map((value, id) => (
                                     <AutoCompleteItem
                                         key={`option-${id}`}
@@ -86,15 +91,13 @@ export const Select: React.FC<SelectProps> = ({
                                         textTransform="capitalize"
                                         label={value}
                                         fixed
-                                        color={error ? 'red.500' : 'currentcolor'}
+                                        color={error ? 'red.500' : TextColor}
                                     />
                                 ))}
                             </AutoCompleteList>
                         </React.Fragment>
                     )}
                 </AutoComplete>
-                {/* <FormHelperText>{!error && "Select value from dropdown"}</FormHelperText>
-        <FormErrorMessage>{error && error.message}</FormErrorMessage> */}
             </FormControl>
         )}
     />

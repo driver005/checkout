@@ -6,6 +6,8 @@ import {
     VStack
 } from '@chakra-ui/react'
 import { useAppSelector } from '@store/hooks';
+import { LightenDarkenColor } from 'utils';
+import { Border, TextColor } from 'config';
 
 
 interface ShippingProps {
@@ -20,7 +22,7 @@ export const Shipping: React.FC<ShippingProps> = ({ method, loaded }) => {
             <VStack spacing='0' alignItems='start'>
                 <Heading
                     as='span'
-                    color='gray.400'
+                    color={LightenDarkenColor(TextColor, 125)}
                     fontWeight='400'
                     fontSize='14px'
                 >
@@ -28,7 +30,7 @@ export const Shipping: React.FC<ShippingProps> = ({ method, loaded }) => {
                 </Heading>
                 <Heading
                     as='span'
-                    color='gray.400'
+                    color={LightenDarkenColor(TextColor, 125)}
                     fontWeight='400'
                     fontSize='12px'
                 >
@@ -37,11 +39,11 @@ export const Shipping: React.FC<ShippingProps> = ({ method, loaded }) => {
             </VStack>
             <Skeleton
                 isLoaded={loaded}
-                borderRadius='md'
+                borderRadius={Border}
             >
                 <Heading
                     as='span'
-                    color='gray.400'
+                    color={LightenDarkenColor(TextColor, 125)}
                     fontWeight='400'
                     fontSize='14px'
                 >

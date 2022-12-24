@@ -1,4 +1,5 @@
 import { Divider, Flex, Heading, HStack } from '@chakra-ui/react';
+import { TextColor } from 'config';
 import { useAppSelector } from '@store/hooks';
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
@@ -49,6 +50,7 @@ export const Infos: React.FC<InfoProps> = ({ loaded, watch }) => {
                     as='span'
                     fontWeight='500'
                     fontSize='14px'
+                    color={TextColor}
                 >
                     Subtotal
                 </Heading>
@@ -56,6 +58,7 @@ export const Infos: React.FC<InfoProps> = ({ loaded, watch }) => {
                     as='span'
                     fontWeight='500'
                     fontSize='14px'
+                    color={TextColor}
                 >
                     {`${i.subTotal.toFixed(2)} €`}
                 </Heading>
@@ -70,6 +73,7 @@ export const Infos: React.FC<InfoProps> = ({ loaded, watch }) => {
                     as='span'
                     fontWeight='500'
                     fontSize='14px'
+                    color={TextColor}
                 >
                     Total due
                 </Heading>
@@ -77,6 +81,7 @@ export const Infos: React.FC<InfoProps> = ({ loaded, watch }) => {
                     as='span'
                     fontWeight='500'
                     fontSize='14px'
+                    color={TextColor}
                 >
                     {`${i.totalDue.toFixed(2)} €`}
                 </Heading>

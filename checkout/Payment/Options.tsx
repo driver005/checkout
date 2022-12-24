@@ -18,6 +18,8 @@ import { Flex } from '../Common/index';
 import { Sepa, PayPal, Wrapper } from 'checkout/Methods/index';
 import { Context } from '@store/context';
 import { useController } from 'react-hook-form';
+import { BackgroundColor, Border, BorderColor, PrimaryColor, Shadow, TextColor } from 'config';
+import { LightenDarkenColor } from 'utils';
 
 
 interface OptionsButtonProps {
@@ -35,8 +37,8 @@ const OptionsButton: React.FC<OptionsButtonProps> = ({ icon, label, props }) => 
         <Box
             as='label'
             w='full'
-            borderRadius='md'
-            bg='white'
+            borderRadius={Border}
+            bg={BackgroundColor}
         >
             <input {...input} />
             <Box
@@ -49,15 +51,12 @@ const OptionsButton: React.FC<OptionsButtonProps> = ({ icon, label, props }) => 
                 paddingBlockStart='6'
                 paddingBlockEnd='6'
                 border='2px solid'
-                borderColor='gray.200'
-                borderRadius='md'
-                _focus={{
-                    boxShadow: 'outline',
-                    borderColor: 'gray.200',
-                }}
+                borderColor={LightenDarkenColor(BackgroundColor, 50)}
+                borderRadius={Border}
+                _focus={{ boxShadow: Shadow, borderColor: BorderColor }}
                 {...checkbox}
                 _checked={{
-                    borderColor: 'gray.500'
+                    borderColor: BorderColor
                 }}
             >
                 <VStack spacing='0' alignItems='start'>
@@ -65,7 +64,7 @@ const OptionsButton: React.FC<OptionsButtonProps> = ({ icon, label, props }) => 
                     <Heading
                         as='span'
                         fontWeight='500'
-                        color={state.isChecked ? 'gray.600' : 'gray.400'}
+                        color={state.isChecked ? PrimaryColor : LightenDarkenColor(TextColor, 125)}
                         size='xs'
                     >
                         {label}
@@ -119,7 +118,7 @@ export const Options: React.FC<OptionsProps> = ({ loaded = true }) => {
             borderRadius='md'
         >
             <Flex>
-                <Heading as='h2' color='gray.500' fontWeight='500' fontSize='16px' mb="16px" lineHeight='1.3'>
+                <Heading as='h2' color={TextColor} fontWeight='500' fontSize='16px' mb="16px" lineHeight='1.3'>
                     Payment details
                 </Heading>
                 <ButtonGroup
@@ -130,11 +129,6 @@ export const Options: React.FC<OptionsProps> = ({ loaded = true }) => {
                     w='full'
                     {...group}
                 >
-                    {/* <OptionsButton
-                    icon={BsCreditCard2Front}
-                    label='Card'
-                    props={getRadioProps({ value: 'Card' })}
-                /> */}
                     <OptionsButton
                         icon={TbBrandPaypal}
                         label='PayPal'

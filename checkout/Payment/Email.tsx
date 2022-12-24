@@ -23,7 +23,6 @@ export const Email: React.FC<EmailProps> = ({ error, loaded = true }) => {
             <Flex>
                 <Label label='Email' error={error.email} />
                 <ChakraFlex
-                    boxShadow='lg'
                     borderRadius='md'
                     mt='4px'
                 >

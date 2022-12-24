@@ -3,6 +3,8 @@ import { Heading, VStack, chakra, Box, Icon, HStack, Image, Flex, SimpleGrid, Sk
 import { TbChevronDown } from 'react-icons/tb';
 import { Modal } from './Modal';
 import { useAppSelector } from '@store/hooks';
+import { Border, TextColor } from 'config';
+import { LightenDarkenColor } from 'utils';
 
 type ProductProps = {
     loaded?: boolean;
@@ -44,7 +46,7 @@ export const Product: React.FC<ProductProps> = ({ loaded = false }) => {
                                 alt='Product image'
                                 w='full'
                                 h='full'
-                                borderRadius='md'
+                                borderRadius={Border}
                                 src='https://d1wqzb5bdbcre6.cloudfront.net/c25a949b6f1ffabee9af1a5696d7f152325bdce2d1b926456d42994c3d91ad78/68747470733a2f2f66696c65732e7374726970652e636f6d2f6c696e6b732f666c5f746573745f67625631776635726a4c64725a635858647032346d643649'
                             />
                         </Skeleton>
@@ -61,6 +63,7 @@ export const Product: React.FC<ProductProps> = ({ loaded = false }) => {
                                     as='span'
                                     fontWeight='500'
                                     fontSize='14px'
+                                    color={TextColor}
                                 >
                                     {product.name && product.name}
                                 </Heading>
@@ -68,6 +71,7 @@ export const Product: React.FC<ProductProps> = ({ loaded = false }) => {
                                     as='span'
                                     fontWeight='500'
                                     fontSize='14px'
+                                    color={TextColor}
                                 >
                                     {product.totalDue && product.totalDue.toFixed(2)} €
                                 </Heading>
@@ -83,7 +87,7 @@ export const Product: React.FC<ProductProps> = ({ loaded = false }) => {
                                     as='span'
                                     display='flex'
                                     alignItems='center'
-                                    color='gray.400'
+                                    color={LightenDarkenColor(TextColor, 125)}
                                     fontWeight='400'
                                     fontSize='12px'
                                 >
@@ -97,7 +101,7 @@ export const Product: React.FC<ProductProps> = ({ loaded = false }) => {
                                         padding='1px 4px'
                                         marginX='2px'
                                         borderRadius='base'
-                                        color='black'
+                                        color={TextColor}
                                         fontWeight='500'
                                         fontSize='12px'
                                         _hover={{
@@ -129,7 +133,7 @@ export const Product: React.FC<ProductProps> = ({ loaded = false }) => {
                                 </Heading>
                                 <Heading
                                     as='span'
-                                    color='gray.400'
+                                    color={LightenDarkenColor(TextColor, 125)}
                                     fontWeight='400'
                                     fontSize='12px'
                                 >

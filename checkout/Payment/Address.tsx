@@ -30,7 +30,6 @@ export const Address: React.FC<AddressProps> = ({ error, loaded = true }) => {
                 <Label label='Shipping address' />
                 <VStack
                     spacing='0'
-                    boxShadow='lg'
                     borderRadius='md'
                     mt='4px'
                 >

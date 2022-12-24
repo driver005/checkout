@@ -32,7 +32,6 @@ export const PayPal: React.FC<PayPalProps> = ({ control }) => (
         <VStack spacing='16px'>
             <Flex>
                 <ChakraFlex
-                    boxShadow='lg'
                     borderRadius='md'
                     mt='4px'
                 >

@@ -4,6 +4,8 @@ import {
     Skeleton,
     VStack,
 } from '@chakra-ui/react';
+import { TextColor } from 'config';
+import { LightenDarkenColor } from 'utils';
 
 
 interface HeadingProps {
@@ -20,7 +22,7 @@ export const Heading: React.FC<HeadingProps> = ({ loaded = true }) => (
         >
             <ChakraHeading
                 as='span'
-                color='gray.500'
+                color={LightenDarkenColor(TextColor, 125)}
                 fontWeight='500'
                 size='xs'
             >
@@ -34,6 +36,7 @@ export const Heading: React.FC<HeadingProps> = ({ loaded = true }) => (
             <ChakraHeading
                 as='span'
                 fontWeight='500'
+                color={TextColor}
                 size='xl'
             >
                 150.00 €

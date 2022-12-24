@@ -3,6 +3,7 @@ import {
     Heading as ChakraHeading,
 } from '@chakra-ui/react';
 import { Flex } from './index';
+import { TextColor } from 'config';
 
 
 interface HeadingProps {
@@ -13,7 +14,7 @@ export const Heading: React.FC<HeadingProps> = ({ label }) => (
     <Flex>
         <ChakraHeading
             as='h2'
-            color='gray.800'
+            color={TextColor}
             fontWeight='500'
             fontSize='16px'
             size='xs'

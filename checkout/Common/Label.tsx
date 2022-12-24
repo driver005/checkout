@@ -3,6 +3,7 @@ import {
     Flex as ChakraFlex,
     Heading,
 } from '@chakra-ui/react';
+import { TextColor } from 'config';
 
 
 interface LabelProps {
@@ -17,7 +18,7 @@ export const Label: React.FC<LabelProps> = ({ label, error }) => (
     >
         <Heading
             as='span'
-            color='gray.500'
+            color={TextColor}
             fontWeight='500'
             size='xs'
         >

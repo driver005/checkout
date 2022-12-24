@@ -4,6 +4,8 @@ import {
     HStack,
     VStack
 } from '@chakra-ui/react'
+import { TextColor } from 'config';
+import { LightenDarkenColor } from 'utils';
 
 
 interface TaxProps {
@@ -15,7 +17,7 @@ export const Tax: React.FC<TaxProps> = ({ price, procent }) => (
     <HStack w='full' justifyContent='space-between' mb='16px'>
         <Heading
             as='span'
-            color='gray.400'
+            color={LightenDarkenColor(TextColor, 125)}
             fontWeight='400'
             fontSize='14px'
         >
@@ -23,7 +25,7 @@ export const Tax: React.FC<TaxProps> = ({ price, procent }) => (
         </Heading>
         <Heading
             as='span'
-            color='gray.400'
+            color={LightenDarkenColor(TextColor, 125)}
             fontWeight='400'
             fontSize='14px'
         >
