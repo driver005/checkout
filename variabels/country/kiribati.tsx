@@ -1,5 +1,5 @@
 export const kiribati = [
-    "Gilbert Islands",
-    "Line Islands",
-    "Phoenix Islands",
+    { value: "Gilbert Islands", label: "Gilbert Islands" },
+    { value: "Line Islands", label: "Line Islands" },
+    { value: "Phoenix Islands", label: "Phoenix Islands" },
 ]

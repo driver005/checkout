@@ -6,7 +6,7 @@ import {
     VStack
 } from '@chakra-ui/react';
 import { Radio } from '@components/Radio'
-import { Flex, Label } from '../Common/index';
+import { Flex, Label } from '@components/index';
 import { useController } from 'react-hook-form';
 import { Context } from '@store/context';
 import { useAppSelector } from '@store/hooks';

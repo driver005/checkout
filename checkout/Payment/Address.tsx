@@ -8,7 +8,7 @@ import {
 import { Input } from '@components/Input'
 import { Select } from '@components/Select'
 import { countries } from '@variabels/index';
-import { Error, Flex, Label, Wrapper } from '../Common/index';
+import { Error, Flex, Label, Wrapper } from '@components/index';
 import { Context } from '@store/context';
 
 interface AddressProps {

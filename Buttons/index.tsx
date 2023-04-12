@@ -1,1 +1,0 @@
-export { PayButton } from './Pay/Pay'

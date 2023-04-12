@@ -1,4 +1,10 @@
 export { countries } from "./countries";
+export { bank as przelewy24Banks } from "./przelewy24";
+export { bank as epsBanks } from "./eps";
+export { bank as idealBanks } from "./ideal";
+export { countries as sofortCountries } from "./sofort";
+
+
 export { australia } from "./country/australia";
 export { argentina } from "./country/argentina";
 export { armenia } from "./country/armenia";

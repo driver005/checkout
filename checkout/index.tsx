@@ -1,4 +1,3 @@
-export { Flex, Heading } from "./Common/index";
 export { Address } from "./Payment/Address";
 export { Email } from "./Payment/Email";
 export { Methods } from "./Payment/Methods";

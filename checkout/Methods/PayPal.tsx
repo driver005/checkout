@@ -10,7 +10,7 @@ import {
     VStack,
 } from '@chakra-ui/react';
 import { Input } from '@components/Input'
-import { Flex } from '../Common/index';
+import { Flex } from '@components/index';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Wrapper } from './Wrapper';
 import { Control, FieldValues } from 'react-hook-form';

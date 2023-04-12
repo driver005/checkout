@@ -1,5 +1,5 @@
 import { FormControl, FormErrorMessage, FormHelperText, FormLabel, InputAddonProps, InputGroup, InputLeftAddon, InputRightElement, Input as InputComponent, InputLeftElement, Icon } from "@chakra-ui/react";
-import { BackgroundColor, Border, BorderColor, Shadow, TextColor } from "config";
+import { BackgroundColor, Border, BorderColor, ErrorColor, ErrorShadow, Shadow, TextColor } from "config";
 import React from "react";
 import { Control, Controller, FieldValues } from "react-hook-form";
 import { RiErrorWarningLine } from "react-icons/ri";
@@ -15,10 +15,13 @@ export interface InputProps {
     label?: string;
     type?: string;
     position?: string;
+    direction?: string;
     defaultValue?: string;
     disabled?: boolean;
     error?: any;
     icon?: any;
+    iconPadding?: string;
+    iconMargin?: string;
     text?: any;
     addon?: any;
     onClick?: (method: any) => Promise<void>;
@@ -30,61 +33,77 @@ export const Input: React.FC<InputProps> = ({
     type,
     name,
     position,
+    direction = "both",
     defaultValue,
     disabled = false,
     error = null,
     rules,
     icon,
+    iconPadding = "10",
+    iconMargin = "0",
     addon,
     text,
     control,
     onClick = function () { }
-}) => (
-    <Controller
-        control={control}
-        name={name}
-        defaultValue={defaultValue}
-        rules={rules}
-        render={({ field: { onChange, onBlur, value, ref } }) => (
-            <FormControl
-                id={id}
-                marginInlineStart={"0px !important"}
-                isInvalid={error}
-                isDisabled={disabled}
-                bg='white'
-                borderBottomRadius={(position === "top" || position === "mid") ? "none" : Border}
-                borderTopRadius={(position === "bottom" || position === "mid") ? "none" : Border}
-            >
-                <InputGroup>
-                    {addon && <InputLeftElement children={addon} />}
-                    <InputComponent
-                        type={type}
-                        _focus={{ boxShadow: Shadow, borderColor: BorderColor }}
-                        _hover={{}}
-                        _placeholder={{ color: error ? 'red.500' : TextColor, opacity: 0.5 }}
-                        borderBottomRadius={(position === "top" || position === "mid") ? "none" : Border}
-                        borderTopRadius={(position === "bottom" || position === "mid") ? "none" : Border}
-                        background={BackgroundColor}
-                        border='1px solid'
-                        borderColor={LightenDarkenColor(BackgroundColor, 50)}
-                        color={TextColor}
-                        errorBorderColor='red.500'
-                        zIndex={error ? 1 : 0}
-                        paddingRight={text ? '14' : '10'}
-                        placeholder={label}
-                        name={name}
-                        onChange={onChange}
-                        onBlur={onBlur}
-                        value={value}
-                        ref={ref}
-                    />
+}) => {
+    const [focus, setFocus] = React.useState(false)
 
-                    {(icon || text) && <InputRightElement onClick={onClick} children={icon || text} mr={text ? '4' : '0'} />}
-                    {error && <InputRightElement onClick={onClick} children={<Icon color='red.500' as={RiErrorWarningLine} />} />}
-                </InputGroup>
-                {/* {!addon && <FormHelperText>{!error && "Fill in the requierd value"}</FormHelperText>}
+    const onFocus = () => {
+        setFocus(true)
+    }
+
+    const onBlur = () => {
+        setFocus(false)
+    }
+
+    return (
+        <Controller
+            control={control}
+            name={name}
+            defaultValue={defaultValue}
+            rules={rules}
+            render={({ field: { onChange, value, ref } }) => (
+                <FormControl
+                    id={id}
+                    marginInlineStart={"0px !important"}
+                    isInvalid={error}
+                    isDisabled={disabled}
+                    bg='white'
+                    zIndex={focus ? '1' : '0'}
+                >
+                    <InputGroup>
+                        {addon && <InputLeftElement children={addon} />}
+                        <InputComponent
+                            type={type}
+                            _focus={{ boxShadow: `${error ? ErrorShadow : Shadow}`, borderColor: `${error ? ErrorColor : BorderColor}` }}
+                            _placeholder={{ color: `${error ? ErrorColor : TextColor}`, opacity: 0.5 }}
+                            onFocus={onFocus}
+                            onBlur={onBlur}
+                            borderTopLeftRadius={position === "mid" ? "none" : position === "top" ? (direction === "left" || direction === "both") ? Border : "none" : position == "alone" ? Border : "none"}
+                            borderTopRightRadius={position === "mid" ? "none" : position === "top" ? (direction === "right" || direction === "both") ? Border : "none" : position == "alone" ? Border : "none"}
+                            borderBottomLeftRadius={position === "mid" ? "none" : position === "bottom" ? (direction === "left" || direction === "both") ? Border : "none" : position == "alone" ? Border : "none"}
+                            borderBottomRightRadius={position === "mid" ? "none" : position === "bottom" ? (direction === "right" || direction === "both") ? Border : "none" : position == "alone" ? Border : "none"}
+                            background={BackgroundColor}
+                            border='1px solid'
+                            borderColor={LightenDarkenColor(BackgroundColor, 50)}
+                            color={error ? ErrorColor : TextColor}
+                            errorBorderColor={ErrorColor}
+                            zIndex={error ? 1 : 0}
+                            paddingRight={text ? '14' : iconPadding}
+                            placeholder={label}
+                            name={name}
+                            onChange={onChange}
+                            value={value}
+                            ref={ref}
+                        />
+
+                        {(icon || text) && <InputRightElement onClick={onClick} children={icon || text} mr={text ? '4' : iconMargin} />}
+                        {error && <InputRightElement onClick={onClick} children={<Icon color='red.500' as={RiErrorWarningLine} />} />}
+                    </InputGroup>
+                    {/* {!addon && <FormHelperText>{!error && "Fill in the requierd value"}</FormHelperText>}
         <FormErrorMessage>{error && error.message}</FormErrorMessage> */}
-            </FormControl>
-        )}
-    />
-);
+                </FormControl>
+            )}
+        />
+    )
+};

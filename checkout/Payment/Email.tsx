@@ -4,7 +4,7 @@ import {
     Skeleton,
 } from '@chakra-ui/react';
 import { Input } from '@components/Input'
-import { Error, Flex, Label } from '../Common/index';
+import { Error, Flex, Label } from '@components/index';
 import { Context } from '@store/context';
 
 interface EmailProps {
@@ -31,6 +31,7 @@ export const Email: React.FC<EmailProps> = ({ error, loaded = true }) => {
                         type={"email"}
                         name={'email'}
                         label={"Email"}
+                        position={"alone"}
                         control={control}
                         rules={
                             {

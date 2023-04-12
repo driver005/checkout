@@ -1,0 +1,80 @@
+export * from './balanceApi';
+import { BalanceApi } from './balanceApi';
+export * from './balanceTransactionApi';
+import { BalanceTransactionApi } from './balanceTransactionApi';
+export * from './bankAccountApi';
+import { BankAccountApi } from './bankAccountApi';
+export * from './cardApi';
+import { CardApi } from './cardApi';
+export * from './cashBalanceApi';
+import { CashBalanceApi } from './cashBalanceApi';
+export * from './chargeApi';
+import { ChargeApi } from './chargeApi';
+export * from './checkoutSessionApi';
+import { CheckoutSessionApi } from './checkoutSessionApi';
+export * from './couponApi';
+import { CouponApi } from './couponApi';
+export * from './creditNoteApi';
+import { CreditNoteApi } from './creditNoteApi';
+export * from './customerApi';
+import { CustomerApi } from './customerApi';
+export * from './discountApi';
+import { DiscountApi } from './discountApi';
+export * from './disputeApi';
+import { DisputeApi } from './disputeApi';
+export * from './fileApi';
+import { FileApi } from './fileApi';
+export * from './invoiceApi';
+import { InvoiceApi } from './invoiceApi';
+export * from './invoiceitemApi';
+import { InvoiceitemApi } from './invoiceitemApi';
+export * from './lineItemApi';
+import { LineItemApi } from './lineItemApi';
+export * from './mandateApi';
+import { MandateApi } from './mandateApi';
+export * from './paymentIntentApi';
+import { PaymentIntentApi } from './paymentIntentApi';
+export * from './paymentLinkApi';
+import { PaymentLinkApi } from './paymentLinkApi';
+export * from './paymentMethodApi';
+import { PaymentMethodApi } from './paymentMethodApi';
+export * from './payoutApi';
+import { PayoutApi } from './payoutApi';
+export * from './planApi';
+import { PlanApi } from './planApi';
+export * from './priceApi';
+import { PriceApi } from './priceApi';
+export * from './productApi';
+import { ProductApi } from './productApi';
+export * from './promotionCodeApi';
+import { PromotionCodeApi } from './promotionCodeApi';
+export * from './quoteApi';
+import { QuoteApi } from './quoteApi';
+export * from './refundApi';
+import { RefundApi } from './refundApi';
+export * from './setupAttemptApi';
+import { SetupAttemptApi } from './setupAttemptApi';
+export * from './setupIntentApi';
+import { SetupIntentApi } from './setupIntentApi';
+export * from './sourceApi';
+import { SourceApi } from './sourceApi';
+export * from './subscriptionApi';
+import { SubscriptionApi } from './subscriptionApi';
+export * from './subscriptionItemApi';
+import { SubscriptionItemApi } from './subscriptionItemApi';
+export * from './subscriptionScheduleApi';
+import { SubscriptionScheduleApi } from './subscriptionScheduleApi';
+export * from './usageRecordApi';
+import { UsageRecordApi } from './usageRecordApi';
+import * as http from 'http';
+
+export class HttpError extends Error {
+    constructor (public response: http.IncomingMessage, public body: any, public statusCode?: number) {
+        super('HTTP request failed');
+        this.name = 'HttpError';
+    }
+}
+
+export { RequestFile } from '../model/models';
+
+export const APIS = [BalanceApi, BalanceTransactionApi, BankAccountApi, CardApi, CashBalanceApi, ChargeApi, CheckoutSessionApi, CouponApi, CreditNoteApi, CustomerApi, DiscountApi, DisputeApi, FileApi, InvoiceApi, InvoiceitemApi, LineItemApi, MandateApi, PaymentIntentApi, PaymentLinkApi, PaymentMethodApi, PayoutApi, PlanApi, PriceApi, ProductApi, PromotionCodeApi, QuoteApi, RefundApi, SetupAttemptApi, SetupIntentApi, SourceApi, SubscriptionApi, SubscriptionItemApi, SubscriptionScheduleApi, UsageRecordApi];

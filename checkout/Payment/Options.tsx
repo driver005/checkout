@@ -14,7 +14,7 @@ import {
 import { IconType } from 'react-icons';
 import { TbBrandPaypal } from 'react-icons/tb'
 import { SiSepa } from 'react-icons/si'
-import { Flex } from '../Common/index';
+import { Flex } from '@components/index';
 import { Sepa, PayPal, Wrapper } from 'checkout/Methods/index';
 import { Context } from '@store/context';
 import { useController } from 'react-hook-form';

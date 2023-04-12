@@ -1,4 +1,4 @@
 export const stkittsnevis = [
-    "Nevis",
-    "St. Kitts"
+    { value: "Nevis", label: "Nevis" },
+    { value: "St. Kitts", label: "St. Kitts" },
 ]

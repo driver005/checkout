@@ -8,15 +8,15 @@ import {
     Skeleton
 } from '@chakra-ui/react';
 import {
-    Methods,
-    Options,
+    Methods as ShippingMethods,
     Address,
     Email
 } from './Payment/index';
-import { Heading, Error } from './Common/index';
+import { Heading, Error } from '@components/index';
 import Button from '@components/Button';
-import { PayButton } from 'Buttons';
+import { PayButton } from '@components/index';
 import { Control, FieldValues, useForm, UseFormHandleSubmit } from 'react-hook-form';
+import { Element } from '@element/index';
 
 
 interface PaymentProps {
@@ -43,51 +43,45 @@ export const Payment: React.FC<PaymentProps> = ({ handleSubmit, errors, loaded =
                 flexDirection='row'
                 flexWrap='wrap'
             >
-                <chakra.form w='full' onSubmit={handleSubmit(onSubmit)}>
-                    <Flex
-                        flexDirection='row'
-                        flexWrap='wrap'
-                        mb='32px'
+                {/* <chakra.form w='full' onSubmit={handleSubmit(onSubmit)}> */}
+                <Flex
+                    flexDirection='row'
+                    flexWrap='wrap'
+                    mb='32px'
+                    w='full'
+                >
+                    <VStack
+                        spacing='16px'
                         w='full'
+                        alignItems='start'
                     >
-                        <VStack
-                            spacing='16px'
-                            w='full'
-                            alignItems='start'
+                        <Skeleton
+                            isLoaded={loaded}
+                            borderRadius='xl'
+                            mt='3'
                         >
-                            <Skeleton
-                                isLoaded={loaded}
-                                borderRadius='xl'
-                                mt='3'
-                            >
-                                <Heading label='Shipping information' />
-                            </Skeleton>
-                            <Email
-                                error={errors}
-                                loaded={loaded}
-                            />
-                            <Address
-                                error={errors}
-                                loaded={loaded}
-                            />
-                            <Flex
-                                w='full'
-                                flexDirection='column'
-                            >
-                                <Methods loaded={loaded} error={errors.methods} />
-                                {errors.methods && <Error label={errors.methods.message} />}
-                            </Flex>
-                        </VStack>
-                    </Flex>
-                    <Options loaded={loaded} />
-                    {errors.options && <Error label={errors.options.message} />}
-                    <PayButton
-                        label='Pay'
-                        height='14'
-                        type='submit'
-                        loaded={loaded}
-                    />
-                </chakra.form>
+                            <Heading label='Shipping information' />
+                        </Skeleton>
+                        <Email
+                            error={errors}
+                            loaded={loaded}
+                        />
+                        <Address
+                            error={errors}
+                            loaded={loaded}
+                        />
+                        <Flex
+                            w='full'
+                            flexDirection='column'
+                        >
+                            <ShippingMethods loaded={loaded} error={errors.methods} />
+                            {errors.methods && <Error label={errors.methods.message} />}
+                        </Flex>
+                    </VStack>
+                </Flex>
+                <Element loaded={loaded} />
+                {errors.options && <Error label={errors.options.message} />}
+                {/* </chakra.form> */}
             </Flex>
         </Flex>
 

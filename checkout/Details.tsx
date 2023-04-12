@@ -21,9 +21,10 @@ import {
 import { motion } from 'framer-motion';
 import { TbChevronDown } from 'react-icons/tb';
 import { Input } from '@components/Input';
-import { Infos, Product, Heading, Back } from './Detail/index';
+import { Infos, Heading, Back } from './Detail/index';
 import { useDispatch } from 'react-redux';
 import { FETCH } from '@variabels/types';
+import { Product } from '@components/Details'
 
 const MotionBox = motion<Omit<BoxProps, "transition">>(Box);
 
